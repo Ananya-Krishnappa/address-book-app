@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/addressBookForm.css">
+    <title>Address Book App</title>
+</head>
+
+<body>
+    <header class="header-content header">
+        <div class="logo-content">
+            <img src="../assets/images/logo.png" alt="logo">
+            <div>
+                <span class="address-text">ADDRESS</span><br>
+                <span class="address-text address-payroll">BOOK</span>
+            </div>
+        </div>
+    </header>
+    <div class="form-content">
+        <form action="#" class="form" onreset="resetForm()" onsubmit="save();return false">
+            <div class="form-head">PERSON ADDRESS FORM</div>
+            <div class="row-content">
+                <label class="label text" for="name">Full Name</label>
+                <input class="input" type="text" name="name" id="name">
+            </div>
+            <div class="row-content">
+                <label for="phone" class="label text">Phone Number</label>
+                <input class="input" type="tel" name="phone" id="phone">
+            </div>
+            <div class="row-content">
+                <label for="address" class="label text">Address</label>
+                <textarea class="input" name="address" id="address" style="height: 100px"></textarea>
+            </div>
+            <div class="row-content-address">
+                <div class="city-container subAddress">
+                    <label for="city">Select City</label>
+                    <select name="city" id="city">
+                        <option value="Bengaluru">Bengaluru</option>
+                        <option value="Mumbai">Mumbai</option>
+                        <option value="Pune">Pune</option>
+                        <option value="Mysore">Mysore</option>
+                        <option value="Shimoga">Shimoga</option>
+                        <option value="Chikmagalur">Chikmagalur</option>
+                    </select>
+                </div>
+                <div class="state-container subAddress">
+                    <label for="">Select State</label>
+                    <select name="state" id="state">
+                        <option value="Karnataka">Karnataka</option>
+                        <option value="Kerala">Kerala</option>
+                        <option value="Tamilnadu">Tamilnadu</option>
+                        <option value="Maharashtra">Maharashtra</option>
+                        <option value="Rajasthan">Rajasthan</option>
+                        <option value="Delhi">Delhi</option>
+                    </select>
+                </div>
+                <div class="zip-container subAddress">
+                    <label for="zip">Zip Code</label>
+                    <input class="input" type="text" name="zip" id="zip">
+                </div>
+            </div>
+            <div class="add-reset">
+                <button class="addButton button" type="submit" id="addButton">Add</button>
+                <button class="resetButton button" type="reset" id="resetButton">Reset</button>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>
