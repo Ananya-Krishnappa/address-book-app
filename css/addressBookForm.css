@@ -157,3 +157,20 @@ select {
     border-radius: 5px;
     margin: 20px 0 0 20px;
 }
+
+.text-error {
+    margin: 10px;
+    font-size: 12px;
+    font-style: italic;
+    color: red;
+}
+
+@media only screen and (max-width:600px) {
+    .form {
+        margin-top: 10px;
+    }
+
+    .row {
+        flex-direction: column;
+    }
+}

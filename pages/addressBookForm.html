@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/addressBookForm.css">
+    <script type="text/javascript" src="../js/contact.js"></script>
+    <script type="text/javascript" src="../js/addressBookFormService.js"></script>
     <title>Address Book App</title>
 </head>
 
@@ -20,11 +22,12 @@
         </div>
     </header>
     <div class="form-content">
-        <form action="#" class="form" onreset="resetForm()" onsubmit="save();return false">
+        <form action="#" class="form" name="form" onreset="resetForm()" onsubmit="save();return false">
             <div class="form-head">PERSON ADDRESS FORM</div>
             <div class="row-content">
-                <label class="label text" for="name">Full Name</label>
-                <input class="input" type="text" name="name" id="name">
+                <label class="label text" for="firstName">Full Name</label>
+                <input class="input" type="text" name="firstName" id="firstName">
+                <error-output class="text-error" for="text"></error-output>
             </div>
             <div class="row-content">
                 <label for="phone" class="label text">Phone Number</label>
@@ -36,7 +39,7 @@
             </div>
             <div class="row-content-address">
                 <div class="city-container subAddress">
-                    <label for="city">Select City</label>
+                    <label class="label text" for="city">Select City</label>
                     <select name="city" id="city">
                         <option value="Bengaluru">Bengaluru</option>
                         <option value="Mumbai">Mumbai</option>
@@ -47,7 +50,7 @@
                     </select>
                 </div>
                 <div class="state-container subAddress">
-                    <label for="">Select State</label>
+                    <label class="label text" for="state">Select State</label>
                     <select name="state" id="state">
                         <option value="Karnataka">Karnataka</option>
                         <option value="Kerala">Kerala</option>
@@ -58,7 +61,7 @@
                     </select>
                 </div>
                 <div class="zip-container subAddress">
-                    <label for="zip">Zip Code</label>
+                    <label  class="label text" for="zip">Zip Code</label>
                     <input class="input" type="text" name="zip" id="zip">
                 </div>
             </div>
