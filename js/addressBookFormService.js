@@ -15,10 +15,27 @@ window.addEventListener('DOMContentLoaded', (event) => {
     });
 })
 
-function save() {
+function save(event) {
+    event.preventDefault();
+    event.stopPropagation();
     try {
+        let postUrl = "http://localhost:3000/AddressBook/";
+        let methodType = "POST";
         let contact = createContactInAddressBook();
-        createAndUpdateStorage(contact);
+        let id = extractIdFromUrl();
+        if (id) {
+            contact.id = id;
+            postUrl = `http://localhost:3000/AddressBook/${id}`;
+            methodType = "PUT";
+        }
+        makePromiseCall(methodType, postUrl, true, contact)
+            .then(responseText => {
+                console.log("New Contact Added:" + responseText);
+                location.href = '../pages/homePage.html';
+            })
+            .catch(error => {
+                console.log(`${methodType} error status:` + JSON.stringify(error));
+            });
     } catch (e) {
         console.error(e);
     }
@@ -26,11 +43,6 @@ function save() {
 
 function createContactInAddressBook() {
     let contact = new Contact();
-    contact._id = new Date().getTime();
-    return getFormData(contact);
-}
-
-function getFormData(contact) {
     contact._firstName = document.forms["form"]["firstName"].value;
     contact._address = document.forms["form"]["address"].value;
     contact._city = document.forms["form"]["city"].value;
@@ -41,13 +53,16 @@ function getFormData(contact) {
     return contact;
 }
 
-function createAndUpdateStorage(contact) {
-    let addressBookList = JSON.parse(localStorage.getItem("AddressBookList"));
-    if (addressBookList != undefined) {
-        addressBookList.push(contact);
-    } else {
-        addressBookList = [contact]
-    }
-    alert(addressBookList.toString());
-    localStorage.setItem("AddressBookList", JSON.stringify(addressBookList));
+const resetForm = () => {
+    setValue('#firstName', '');
+    setValue('#address', '');
+    setValue('#city', 'Bengaluru');
+    setValue('#state', 'Karnataka');
+    setValue('#phone', '');
+    setValue('#zip', '');
+}
+
+const setValue = (id, value) => {
+    const element = document.querySelector(id);
+    element.value = value;
 }
